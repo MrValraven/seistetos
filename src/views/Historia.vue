@@ -12,7 +12,7 @@
     </ul>
     <div>
       <TextCard v-if="showingFundacao" :title="epocas[0].title" :firstText="epocas[0].firstText" :secondText="epocas[0].secondText" :thirdText="epocas[0].thirdText" :imgPath="getImgURL(epocas[0].imgPath)"/>
-      <TextCard v-if="showingNatalejo" :title="epocas[1].title" :firstText="epocas[1].firstText" :secondText="epocas[1].secondText" :thirdText="epocas[1].thirdText" :imgPath="getImgURL(epocas[1].imgPath)"/>
+      <TextCard v-if="showingNatalejo" :title="epocas[1].title" :fmirstText="epocas[1].firstText" :secondText="epocas[1].secondText" :thirdText="epocas[1].thirdText" :imgPath="getImgURL(epocas[1].imgPath)"/>
       <TextCard v-if="showingTaberna" :title="epocas[2].title" :firstText="epocas[2].firstText" :secondText="epocas[2].secondText" :thirdText="epocas[2].thirdText" :imgPath="getImgURL(epocas[2].imgPath)"/>
       <TextCard v-if="showingAtualidade" :title="epocas[3].title" :firstText="epocas[3].firstText" :secondText="epocas[3].secondText" :thirdText="epocas[3].thirdText" :imgPath="getImgURL(epocas[3].imgPath)"/>
     </div>
@@ -133,12 +133,13 @@ export default defineComponent({
 	flex-direction: row;
   align-items: flex-start;
   background-color: #f7f7f7;
+  padding-top: 145px;
 
   .indice {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 40%;
+    min-width: 40%;
     font-size: 25px;
 
     i {

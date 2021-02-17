@@ -28,6 +28,7 @@ export default defineComponent({
 	opacity: 1;
 	cursor: pointer;
 	transition: 0.5s;
+	z-index: 10;
 
     &:hover {
         scale: 1.1;

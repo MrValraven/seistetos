@@ -15,12 +15,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/eventos',
     name: 'Eventos',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Historia.vue')
+    component: () => import(/* webpackChunkName: "Historia" */ '../views/Eventos.vue')
   },
   {
     path: '/tetos',
     name: 'Tetos',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Historia.vue')
+    component: () => import(/* webpackChunkName: "Historia" */ '../views/Tetos.vue')
   },
   {
     path: '/discografia',

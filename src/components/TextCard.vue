@@ -2,8 +2,8 @@
     <div class="epoca">
         <h1 class="titulo"> {{ title }}</h1>
         <p class="text">{{ firstText }}</p>
-        <p class="text">{{ secondText }}</p>
-        <p class="text">{{ thirdText }}</p>
+        <p v-if="secondText" class="text">{{ secondText }}</p>
+        <p v-if="thirdText" class="text">{{ thirdText }}</p>
         <img :src="imgPath" alt="">
     </div>
 </template>
