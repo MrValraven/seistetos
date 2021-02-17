@@ -1,8 +1,6 @@
 <template>
   <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-  <header  class="header">
-    <Navbar />
-  </header>
+  <Navbar />
   <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
 
   <section class="work">
@@ -112,7 +110,6 @@ export default defineComponent({
     },
     handleScroll () {
       window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
-      console.log("working");
     }
   },
 });
@@ -124,24 +121,6 @@ export default defineComponent({
 
 $PrimaryWhite: #ffffff;
 $SecondaryWhite: #f7f7f7;
-
-
-
-header {
-  position: absolute;
-	z-index: 10;
-	width: 100%;
-	opacity: 0;
-	color: #fff;
-	padding: 35px 100px 0;
-	animation: 1s fadeIn 0.5 forwards;
-}
-
-@keyframes fadeIn {
-  100% {
-      opacity: 1;
-  }
-}
 
 section{
 	display: flex;

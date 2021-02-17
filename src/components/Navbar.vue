@@ -1,5 +1,6 @@
 <template>
 
+  <header class="header">
     <nav id="nav">
 		<div class="logo">
             <router-link class="logoName" to="/">
@@ -12,9 +13,11 @@
 			<li><router-link class="navLinks" :to="{ name: 'Eventos' }">Eventos</router-link></li>
 			<li><router-link class="navLinks" :to="{ name: 'Tetos' }">Tetos</router-link></li>
 			<li><router-link class="navLinks" :to="{ name: 'Discografia' }">Discografia</router-link></li>
-            <li><router-link class="navLinks" :to="{ name: 'Contactos' }">Contactos</router-link></li>
+      <li><router-link class="navLinks" :to="{ name: 'Contactos' }">Contactos</router-link></li>
 		</ul>
 	</nav>
+  </header>
+    
   
 </template>
 
@@ -29,40 +32,55 @@ export default defineComponent({
 
 <style lang="scss">
 
-#nav {
-  display: flex;
-  justify-content: space-between;
+.header {
+  position: absolute;
+	z-index: 10;
+	width: 100%;
+	opacity: 0;
+	color: #fff;
+	padding: 35px 100px 0;
+	animation: 1s fadeIn 0.5 forwards;
 
-  .logo {
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 20rem;
-      height: 17rem;
-      display: inline;
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
     }
   }
 
-  ul {
+  #nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 
-    li {
-      padding: 10px;
-      font-size: 24px;
+    .logo {
 
-      a {
-        font-weight: bold;
-        color: #ffffff;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20rem;
+        height: 17rem;
+        display: inline;
+      }
+    }
 
-        &.router-link-exact-active {
-          color: #42b983;
-        }
-      }  
+    ul {
+      display: flex;
+      justify-content: space-around;
+
+      li {
+        padding: 10px;
+        font-size: 24px;
+
+        a {
+          font-weight: bold;
+          color: #ffffff;
+
+          &.router-link-exact-active {
+            color: #42b983;
+          }
+        }  
+      }
     }
   }
 }
-
 </style>

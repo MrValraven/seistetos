@@ -49,7 +49,7 @@ footer {
                 scale: 1.2;
                 
                 & #instagram {
-                    color:  #c13584;
+                    color: #c13584;
                 }
 
                 & #facebook {
