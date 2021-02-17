@@ -1,5 +1,5 @@
 <template>
-  <a class="apeita"> {{ callToAction }}</a>
+  <a @click="scrollToElement('section')" class="apeita"> {{ callToAction }}</a>
 </template>
 
 <script lang="ts">
@@ -9,7 +9,16 @@ export default defineComponent({
     name: 'ApeitaBtn',
     props: {
     callToAction: String,
-    }    
+    },
+    methods: {
+        scrollToElement(destination: string) {
+            const element = document.querySelector(destination);
+
+            if (element) {
+                element.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+    },    
 
 });
 </script>
@@ -20,13 +29,12 @@ $tetosPrimary: #6d1112;
 
 .apeita {
     font-weight: 600;
-    padding: 20px 46px;
+    padding: 25px 50px;
 	display: inline-block;
 	position: relative;
 	border-radius: 20px;
 	scale: 1.2;
 	background-color: $tetosPrimary;
-    color: white;
 	text-decoration: none;
 	text-transform: uppercase;
 	transition: 0.5s;

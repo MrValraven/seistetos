@@ -1,5 +1,6 @@
-<template >
-  <header>
+<template>
+  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
+  <header  class="header">
     <Navbar />
   </header>
   <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
@@ -34,7 +35,6 @@
     </div>
 	</section>
 
-
 	<section class="reviews">
 
 		<h3 class="title">A Vida de Estudante</h3>
@@ -46,7 +46,6 @@
 
 	
 	</section>
-
 
 	<section id ="contacto" class="contact">
 		<h3 class="title">Apeitas-te?</h3>	
@@ -63,6 +62,7 @@ import { defineComponent } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import Hero from '../components/Hero.vue';
 import ApeitaBtn from '../components/ApeitaBtn.vue';
+import ScrollToTopButton from '../components/ScrollToTopButton.vue';
 import TetoCard from '../components/TetoCard.vue';
 import FeatureCard from '../components/FeatureCard.vue';
 import Footer from '../components/Footer.vue';
@@ -71,6 +71,7 @@ export default defineComponent({
   name: 'Home',
   data() {
     return {
+      isAtTop: true,
       tetosReviews: [
         {id: 1, imgPath: "serodio.webp", quote: "É teres sempre alguém pronto a ajudar quando precisas, é estares sempre rodeado de boa música, é teres o melhor que a UÉ pode oferecer!", author: 'Nuno "Caçador" Serôdio' },
         {id: 2, imgPath: "seixas.webp", quote: "Honestamente, lembro-me de pouca coisa, mas o fígado tem cá umas marcas.", author: 'João "Wolverine" Seixas' },
@@ -86,16 +87,34 @@ export default defineComponent({
   components: {
     Navbar,
     ApeitaBtn,
+    ScrollToTopButton,
     TetoCard,
     FeatureCard,
     Hero,
     Footer,
   },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
     getImgURL(image: String) {
       return require('../assets/media/' + image);
+    },
+    scrollToElement(destination: string) {
+      const element = document.querySelector(destination);
+
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth'});
+      }
+    },
+    handleScroll () {
+      window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+      console.log("working");
     }
-  }
+  },
 });
 </script>
 
@@ -188,6 +207,14 @@ section{
       margin: 30px;
       border-radius: 10px;
     }
+  }
+}
+
+.contact {
+  background-color: $SecondaryWhite;
+
+  p {
+    font-size: 20px;
   }
 }
 
