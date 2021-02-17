@@ -46,22 +46,22 @@ export default defineComponent({
   }
 
   ul {
-      display: flex;
-      justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 
-      li {
-          padding: 10px;
-          font-size: 24px;
+    li {
+      padding: 10px;
+      font-size: 24px;
 
-           a {
-            font-weight: bold;
-            color: #ffffff;
+      a {
+        font-weight: bold;
+        color: #ffffff;
 
-            &.router-link-exact-active {
-            color: #42b983;
-            }
+        &.router-link-exact-active {
+          color: #42b983;
         }
-      }
+      }  
+    }
   }
 }
 

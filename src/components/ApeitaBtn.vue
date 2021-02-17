@@ -16,6 +16,8 @@ export default defineComponent({
 
 <style lang="scss">
 
+$tetosPrimary: #6d1112;
+
 .apeita {
     font-weight: 600;
     padding: 20px 46px;
@@ -23,14 +25,15 @@ export default defineComponent({
 	position: relative;
 	border-radius: 20px;
 	scale: 1.2;
-	background-color: #6d1112;
+	background-color: $tetosPrimary;
+    color: white;
 	text-decoration: none;
 	text-transform: uppercase;
 	transition: 0.5s;
 	overflow: hidden;
 
     &:hover {
-        background-color: #6d1112;
+        background-color: $tetosPrimary;
         box-shadow: 0px 6px #580e0f;
         top: 2px;
     }
