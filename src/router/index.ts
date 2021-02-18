@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/discografia',
     name: 'Discografia',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Historia.vue')
+    component: () => import(/* webpackChunkName: "Historia" */ '../views/Discografia.vue')
   },
   {
     path: '/contactos',
