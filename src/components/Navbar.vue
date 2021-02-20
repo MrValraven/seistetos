@@ -36,16 +36,9 @@ export default defineComponent({
   position: absolute;
 	z-index: 10;
 	width: 100%;
-	opacity: 0;
+	opacity: 1;
 	color: #fff;
 	padding: 35px 100px 0;
-	animation: 1s fadeIn 0.5 forwards;
-
-  @keyframes fadeIn {
-    100% {
-      opacity: 1;
-    }
-  }
 
   #nav {
     display: flex;

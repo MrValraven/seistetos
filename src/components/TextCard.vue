@@ -2,8 +2,11 @@
     <div class="epoca">
         <h1 class="titulo"> {{ title }}</h1>
         <p class="text">{{ firstText }}</p>
+        <slot name="secondTitle"></slot>
         <p v-if="secondText" class="text">{{ secondText }}</p>
+        <slot name="thirdTitle"></slot>
         <p v-if="thirdText" class="text">{{ thirdText }}</p>
+        <slot name="fourthTitle"></slot>
         <img :src="imgPath" alt="">
     </div>
 </template>
@@ -36,7 +39,14 @@ export default defineComponent({
     }
 
     .titulo {
-        font-size: 50px;
+        font-size: 36px;
+        padding-left: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 30px;
         padding-left: 20px;
         text-align: justify;
     }
@@ -45,10 +55,13 @@ export default defineComponent({
         min-width: 100%;
         padding-top: 25px;
         text-align: justify;
+        font-size: 18px;
+        margin: 0;
     }
 
     img {
         width: 100%;
+        margin-top: 35px;
         border-radius: 25px;
     }
 

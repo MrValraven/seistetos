@@ -4,7 +4,7 @@
     <div class="heroContent">
         <h1> {{ title }}</h1>
 	    <h2> {{ subtitle }}</h2>
-		<ApeitaBtn :callToAction="callToAction" />
+		<ApeitaBtn v-if="callToAction" :callToAction="callToAction" />
     </div>
   </section>
 </template>

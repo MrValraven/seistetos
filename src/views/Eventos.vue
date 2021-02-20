@@ -15,9 +15,27 @@
     </ul>
     <div>
         <TextCard v-if="showingDefault" :title="epocas[0].title" :firstText="epocas[0].firstText" :secondText="epocas[0].secondText" :thirdText="epocas[0].thirdText" :imgPath="getImgURL(epocas[0].imgPath)"/>
-        <TextCard v-if="showingBadalo" :title="epocas[1].title" :firstText="epocas[1].firstText" :secondText="epocas[1].secondText" :thirdText="epocas[1].thirdText" :imgPath="getImgURL(epocas[1].imgPath)"/>
+        <TextCard v-if="showingBadalo" :title="epocas[1].title" :firstText="epocas[1].firstText" :secondText="epocas[1].secondText" :thirdText="epocas[1].thirdText" :imgPath="getImgURL(epocas[1].imgPath)">
+          <template v-slot:secondTitle>
+          <h2>Arraial das Palmadas</h2>
+          </template>
+          <template v-slot:thirdTitle>
+          <h2>Noite de Cante Alentejano</h2>
+          </template>
+          <template v-slot:fourthTitle>
+          <h2>Dia do Festival</h2>
+          <p class="text">Finalmente, na terceira noite, dá-se o “Badalo”. 
+            Os grupos concorrentes e convidados apresentam-se através de breves atuações, demonstrando o espírito da sua academia; 
+            O Grupo Académico Seistetos reúne um leque de gerações em palco matando saudades e avivando memórias de copos e guitarradas; 
+            E, por fim, são atribuídos os prémios do concurso aos grupos que contribuiram para uma grandiosa noite de espetáculo e todo um festival memorável.</p>
+          </template>
+        </TextCard>
         <TextCard v-if="showingBaile" :title="epocas[2].title" :firstText="epocas[2].firstText" :secondText="epocas[2].secondText" :thirdText="epocas[2].thirdText" :imgPath="getImgURL(epocas[2].imgPath)"/>
-        <TextCard v-if="showingCaminhada" :title="epocas[3].title" :firstText="epocas[3].firstText" :secondText="epocas[3].secondText" :thirdText="epocas[3].thirdText" :imgPath="getImgURL(epocas[3].imgPath)"/>
+        <TextCard v-if="showingCaminhada" :title="epocas[3].title" :firstText="epocas[3].firstText" :secondText="epocas[3].secondText" :thirdText="epocas[3].thirdText" :imgPath="getImgURL(epocas[3].imgPath)">
+           <template v-slot:fourthTitle>
+            <p class="text"> {{ epocas[3].fourthText }}</p>
+           </template>
+        </TextCard>
         <TextCard v-if="showingMagusto" :title="epocas[4].title" :firstText="epocas[4].firstText" :secondText="epocas[4].secondText" :thirdText="epocas[4].thirdText" :imgPath="getImgURL(epocas[4].imgPath)"/>
         <TextCard v-if="showingLentrisco" :title="epocas[5].title" :firstText="epocas[5].firstText" :secondText="epocas[5].secondText" :thirdText="epocas[5].thirdText" :imgPath="getImgURL(epocas[5].imgPath)"/>
         <TextCard v-if="showingCarrossel" :title="epocas[6].title" :firstText="epocas[6].firstText" :secondText="epocas[6].secondText" :thirdText="epocas[6].thirdText" :imgPath="getImgURL(epocas[6].imgPath)"/>
@@ -73,9 +91,10 @@ export default defineComponent({
         },
         { id: 3, 
           title: "A Grandiosa Caminhada para a Mitra", 
-          firstText:'Reza a lenda que S.Tetinho, antigo estudante da Universidade de Évora, ajudou uma caloira no dia 11 de novembro de 1900 e trocópasso que morria de frio ao sair do Capitulo... Quando lhe perguntou como se chamava, a pequena disse que era a "Joana Castanha Assada Jeropiga de Água-pé", que era de Ourique e tinha vivido em Loulé. O resto não sabemos, porque ainda não eramos nascidos na altura, SEUS CUSCOS! O que sabemos, bem sabido, é que nesse mesmo dia (sim cumprimos horários!) é o Magusto de S.Tetinho, um ganda maluco, que deixou muita saudade e é celebrado todos os anos! Vem conhecer a tua Joana, Maria, Susana, Carina ou Celeste! Às Joanas, Marias, Susanas, Carinas e Celestes, venham conhecer os Joães, Raúis, Sauís e Miguéis desta vida! Vem magustar com quem magusta de ti!', 
-          secondText:'Se nunca tiveste a oportunidade de caminhar aos S\'s até à Mitra, obviamente não vais querer perder esta! Por isso, se adoras madrugar, tens espírito de aventura e gostas de caminhar com o garrafão do vinho às costas, junta-te a nós nesta caminhada única que decorre todos os anos e cada vez com mais estudantes a aderir! Tráz o avô dos tintóis ou o pai taberneiro... ou então podes só trazer o burro do teu colega!', 
-          thirdText:'',
+          firstText:'Já há anos que cada vez mais estudantes aderem a este evento devido à da Lenda do Sarrabulho! Esta lenda conta que numa madrugada de Abril, um antigo aluno da Universidade de Évora terá saído já bem tratado de um estabelecimento noturno qualquer, nisto lembrou-se que havia Ferra da Mitra na manhã seguinte, então Zé Sarrabulho (nome fictício), meteu-se a andar para a Herdade da Mitra com o objectivo de chegar lá pela manhã.', 
+          secondText:'Conta-se que a meio do caminho Zé Sarrabulho encontrou umas "serelhas", que tal como sereias existem no meio do mar, estas vivem no meio do campo e que ao invés de metade mulher/peixe, eram metade mulher/ovelha! Estes seres entoavam o canto das Serelhas, que descrito por Zé Sarrabulho, seria um canto "tã lindu e agradáveli de s\'ouviri...E nã era só mééé que elas faziam, porra!". Quando as Serelhas deram por ele ali especado a olhar para elas, Zé Sarrabulho ainda tentou esconder-se, mas não teria valido a pena porque elas assim do nada, como as rãs comem moscas, as serelhas desapareceram... Nisto Zé Sarrabulho desatou a correr que nem um maluco, mal metia os pés no chão, com o objectivo de chegar o mais depressa possível à Mitra e contar a toda a gente o sucedido. Chegando lá, óbvio que ninguém acreditou no pobre rapaz, tudo se riu e Zé Sarrabulho, com tamanha tristeza, ainda pegou uma vaca e meteu-se d\'ali pra fora... A partir desse dia, Zé Sarrabulho tornou-se outra pessoa, começou a estudar como nunca o tinha feito!', 
+          thirdText:'Foi aí que começou a Lenda do Sarrabulho... e claro, a Grandiosa Caminhada para a Mitra. Em que estudantes perdidos e já sem esperança de acabar o curso, se juntam nessa madrugada com o objectivo de encontrar as tais Serelhas e de ouvir o seu canto, pois dizem que ouvindo esse canto tornar-se-ão em estudantes marrões e o curso será finalmente acabado!',
+          fourthText: "Se nunca tiveste a oportunidade de caminhar aos S\'s até à Mitra, obviamente não vais querer perder esta! Por isso, se adoras madrugar, tens espírito de aventura e gostas de caminhar com o garrafão do vinho às costas, junta-te a nós nesta caminhada única que decorre todos os anos e cada vez com mais estudantes a aderir! Tráz o avô dos tintóis ou o pai taberneiro... ou então podes só trazer o burro do teu colega!",
           imgPath:'tetosCaminhada.webp',
         },
         { id: 4,

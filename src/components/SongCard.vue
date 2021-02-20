@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <h1> {{ nomeCD }}</h1>
-        <ul>
+    <div class="epoca">
+        <h1 class="titulo"> {{ nomeCD }}</h1>
+        <ul class="musicas">
             <Song v-for="musica in musicas" :key="musica.id" :nomeMusica="musica.nome" :spotify="musica.spotify" :youtube="musica.youtube"/>
         </ul>
         <img :src="imgPath" alt="">
@@ -32,5 +32,14 @@ export default defineComponent({
 </script>
 
 <style>
+
+
+.musicas {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: justify;
+}
+
 
 </style>

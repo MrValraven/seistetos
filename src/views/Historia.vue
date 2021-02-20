@@ -138,7 +138,7 @@ export default defineComponent({
   .indice {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     min-width: 40%;
     font-size: 25px;
 
@@ -157,11 +157,11 @@ export default defineComponent({
 
     li {
       width: 90%;
-      padding: 30px;
+      padding: 10px 30px 0 30px;
     } 
 
     a {
-      font-size: 25px;
+      font-size: 24px;
       color: #555;
       display: inline-block;
       position: relative;

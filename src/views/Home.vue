@@ -1,6 +1,6 @@
 <template>
   <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-  <Navbar />
+  <Navbar class="navbar" />
   <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
 
   <section class="work">
@@ -122,6 +122,17 @@ export default defineComponent({
 $PrimaryWhite: #ffffff;
 $SecondaryWhite: #f7f7f7;
 
+.navbar {
+  opacity: 0;
+  animation: 1s fadeIn 0.5 forwards;
+
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
 section{
 	display: flex;
 	flex-direction: column;
@@ -130,7 +141,6 @@ section{
 
   .title {
 	color: #414a4f;
-	text-transform: capitalize; 
 	font: bold 32px 'Open Sans', sans-serif;
 	margin-bottom: 35px;
 	text-align: center;

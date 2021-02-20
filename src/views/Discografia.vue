@@ -2,7 +2,7 @@
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
     <Navbar />
     <Hero :backgroundImage="getImgURL('tetosSeixas.webp')" title="Discografia" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
-    <section class="ourStory">
+    <section class="ourSongs">
         <ul class="indice">
             <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>DISCOGRAFIA</span></i>
             <li><a @click="showCD1()">CD.1 - ANDA KÁ K'EU NÃTALÊJO</a></li>
@@ -28,7 +28,7 @@ import SongCard from '../components/SongCard.vue';
 import Footer from '../components/Footer.vue';
 
 export default defineComponent({
-  name: 'Tetos',
+  name: 'Discografia',
   components: {
     ScrollToTopButton,
     Navbar,
@@ -132,5 +132,72 @@ export default defineComponent({
 
 
 <style lang="scss">
+
+.ourSongs {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: #f7f7f7;
+    padding-top: 145px;
+
+    .indice {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        min-width: 40%;
+        font-size: 25px;
+
+        i {
+        width: 100%;
+        font-size: 30px;
+        padding: 15px;
+        
+        span {
+            font-family: sans-serif;
+            margin-left: 10px;
+            margin-right: 50px;
+            letter-spacing: 5px;
+        }
+        }
+
+        li {
+        width: 90%;
+        padding: 30px;
+        } 
+
+        a {
+        font-size: 25px;
+        color: #555;
+        display: inline-block;
+        position: relative;
+        padding: 10px;
+    
+        &:hover {
+            scale: 0.98;
+
+            &:before {
+            color: #000000;
+            transform: scaleX(1);
+            transform-origin: bottom left;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color:  #6d1112;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        }
+    }
+}
+
 
 </style>

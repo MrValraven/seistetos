@@ -15,22 +15,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/eventos',
     name: 'Eventos',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Eventos.vue')
+    component: () => import(/* webpackChunkName: "Eventos" */ '../views/Eventos.vue')
   },
   {
     path: '/tetos',
     name: 'Tetos',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Tetos.vue')
+    component: () => import(/* webpackChunkName: "Tetos" */ '../views/Tetos.vue')
   },
   {
     path: '/discografia',
     name: 'Discografia',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Discografia.vue')
+    component: () => import(/* webpackChunkName: "Discografia" */ '../views/Discografia.vue')
   },
   {
     path: '/contactos',
     name: 'Contactos',
-    component: () => import(/* webpackChunkName: "Historia" */ '../views/Historia.vue')
+    component: () => import(/* webpackChunkName: "Contactos" */ '../views/Contactos.vue')
   }
 ]
 
