@@ -1,6 +1,7 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-    <Navbar />
+    <NavbarMobile v-if="mobileMode" />
+    <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosArraiolos.webp')" title="Contactos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" />
     <section class="contacts">
         <h1>Apeitas-te?</h1>
@@ -20,6 +21,7 @@
 
 import { defineComponent } from 'vue';
 import Navbar from '../components/Navbar.vue';
+import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
 import ApeitaBtn from '../components/ApeitaBtn.vue';
 import ScrollToTopButton from '../components/ScrollToTopButton.vue';
@@ -31,6 +33,7 @@ export default defineComponent({
     data() {
         return {
             isAtTop: true,
+            mobileMode: false,
             contactInfo: [
               {id: 0, link: "https://goo.gl/maps/urQSW3d6P5AZzo8S9", icon: "fa fa-map-marker", text: "R. de Diogo Cão 21, 7000-278 Évora"},
               {id: 1, link: "https://goo.gl/maps/N2QZJY9Zq3a2YK5y9", icon: "fa fa-music", text: "Ensaios todas as Terças e Quintas às 21:30 no Colégio Luis António Verney"},
@@ -40,6 +43,7 @@ export default defineComponent({
     },
     components: {
     Navbar,
+    NavbarMobile,
     ApeitaBtn,
     ScrollToTopButton,
     Hero,
@@ -48,9 +52,12 @@ export default defineComponent({
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
   },
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     getImgURL(image: String) {
@@ -65,7 +72,10 @@ export default defineComponent({
     },
     handleScroll () {
       window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
-    }
+    },
+    handleResize () {
+        this.mobileMode = window.innerWidth <= 1015;
+    },
   },
 
 });

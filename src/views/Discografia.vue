@@ -1,6 +1,7 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-    <Navbar />
+    <NavbarMobile v-if="mobileMode" />
+    <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosSeixas.webp')" title="Discografia" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
     <section class="ourSongs">
         <ul class="indice">
@@ -22,6 +23,7 @@
 import {defineComponent} from 'vue';
 import ScrollToTopButton from '../components/ScrollToTopButton.vue';
 import Navbar from '../components/Navbar.vue';
+import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
 import TextCard from '../components/TextCard.vue';
 import SongCard from '../components/SongCard.vue';
@@ -32,6 +34,7 @@ export default defineComponent({
   components: {
     ScrollToTopButton,
     Navbar,
+    NavbarMobile,
     Hero,
     SongCard,
     TextCard,
@@ -40,6 +43,7 @@ export default defineComponent({
   data() {
     return {
         isAtTop: true,
+        mobileMode: false,
         showingCD1: true,
         showingCD2: false,
         showingSingteto: false,
@@ -104,6 +108,9 @@ export default defineComponent({
     handleScroll () {
         window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
     },
+    handleResize () {
+        this.mobileMode = window.innerWidth <= 1015;
+    },
     showCD1() {
         this.showingCD1 = true;
         this.showingCD2 = false;
@@ -122,9 +129,12 @@ export default defineComponent({
   },
     created() {
         window.addEventListener('scroll', this.handleScroll);
+        this.handleResize();
+        window.addEventListener('resize', this.handleResize);
     },
     unmounted() {
         window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
     },
 });
 

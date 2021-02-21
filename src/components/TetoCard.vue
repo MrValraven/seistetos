@@ -20,11 +20,10 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .card {
     margin: 10px;
-    box-shadow: -4px -4px 15px rgba(255,255,255,1) , 4px 4px 15px rgba(0,0,0,0.1);
 
     p {
         justify-content: center;
@@ -51,6 +50,13 @@ export default defineComponent({
         margin-bottom: 0;
     }
 
+}
+
+@media (max-width: 400px) {
+    .card {
+      padding: 10px;  
+    }
+    
 }
 
 </style>

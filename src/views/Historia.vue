@@ -1,6 +1,7 @@
 <template>
   <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-  <Navbar />
+  <NavbarMobile v-if="mobileMode" />
+  <Navbar v-if="!mobileMode" />
   <Hero :backgroundImage="getImgURL('tetosArena.webp')" title="A nossa História" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
   <section class="ourStory">
     <ul class="indice">
@@ -23,6 +24,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Navbar from '../components/Navbar.vue';
+import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
 import ApeitaBtn from '../components/ApeitaBtn.vue';
 import TextCard from '../components/TextCard.vue';
@@ -34,6 +36,7 @@ export default defineComponent({
   data() {
     return {
       isAtTop: true,
+      mobileMode: false,
       showingFundacao: true,
       showingNatalejo: false,
       showingTaberna: false,
@@ -72,6 +75,7 @@ export default defineComponent({
   },
   components: {
     Navbar,
+    NavbarMobile,
     ApeitaBtn,
     ScrollToTopButton,
     TextCard,
@@ -80,9 +84,12 @@ export default defineComponent({
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
   },
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     getImgURL(image: String) {
@@ -97,6 +104,9 @@ export default defineComponent({
     },
     handleScroll () {
       window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+    },
+    handleResize () {
+      this.mobileMode = window.innerWidth <= 1015;
     },
     showFundacao() {
       this.showingFundacao = true;

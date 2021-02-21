@@ -1,6 +1,7 @@
 <template>
-  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-  <Navbar class="navbar" />
+  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
+  <NavbarMobile v-if="mobileMode" />
+  <Navbar v-if="!mobileMode" class="navbar" />
   <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
 
   <section class="work">
@@ -27,9 +28,9 @@
        <FeatureCard v-for="feature in features" :key="feature.id" :icon="feature.icon" :title="feature.subtitle" :description="feature.description" />
     </ul>
 			
-    <div class="viagens">
+    <div v-if="!mobileMode" class="viagens">
       <img class="viagens" src="../assets/media/tetosLisboa.webp" alt="">
-      <img class="viagens" src="../assets/media/tetosCovilha.webp" alt="">
+      <img  class="viagens" src="../assets/media/tetosCovilha.webp" alt="">
     </div>
 	</section>
 
@@ -50,7 +51,7 @@
 		<p>Tens vontade de aprender, orgulho para demonstrar o teu espirito académico, um estomâgo e fígado impertubável? Estás pronto para sair para a rua, cantar as nossas canções, trovando à luz da lua para conquistar corações?</p>
 		<hr>
 
-		<ApeitaBtn callToAction="Contacta-nos!" />
+		<router-link class="routerLink" :to="{ name: 'Contactos' }" ><ApeitaBtn callToAction="Contacta-nos!" /></router-link>
 	</section>
   <Footer />
 </template>
@@ -58,6 +59,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Navbar from '../components/Navbar.vue';
+import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
 import ApeitaBtn from '../components/ApeitaBtn.vue';
 import ScrollToTopButton from '../components/ScrollToTopButton.vue';
@@ -70,6 +72,7 @@ export default defineComponent({
   data() {
     return {
       isAtTop: true,
+      mobileMode: false,
       tetosReviews: [
         {id: 1, imgPath: "serodio.webp", quote: "É teres sempre alguém pronto a ajudar quando precisas, é estares sempre rodeado de boa música, é teres o melhor que a UÉ pode oferecer!", author: 'Nuno "Caçador" Serôdio' },
         {id: 2, imgPath: "seixas.webp", quote: "Honestamente, lembro-me de pouca coisa, mas o fígado tem cá umas marcas.", author: 'João "Wolverine" Seixas' },
@@ -84,6 +87,7 @@ export default defineComponent({
   },
   components: {
     Navbar,
+    NavbarMobile,
     ApeitaBtn,
     ScrollToTopButton,
     TetoCard,
@@ -93,9 +97,12 @@ export default defineComponent({
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
+    this.handleResize();
+    window.addEventListener('resize', this.handleResize);
   },
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     getImgURL(image: String) {
@@ -110,7 +117,10 @@ export default defineComponent({
     },
     handleScroll () {
       window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
-    }
+    },
+    handleResize () {
+      this.mobileMode = window.innerWidth <= 1015;
+    },
   },
 });
 </script>
@@ -153,6 +163,7 @@ section{
     padding: 0 20px;
     line-height: 2;
   }
+
 }
 
 .grid  {
@@ -166,7 +177,8 @@ section{
   justify-content: space-around;
 
   .info {
-    width: 70%;
+    min-width: 50%;
+    margin-right: 50px;
   }
 
  .viagens {
@@ -204,6 +216,43 @@ section{
 
   p {
     font-size: 20px;
+  }
+
+  .routerLink {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1015px) {
+  section {
+    padding: 10px 10px;
+  }
+  .work {
+    flex-direction: column;
+    justify-content: center;
+
+    .info {
+        width: 100%;
+        margin-right: 0;
+
+        p {
+          width: 100%;
+        }
+      }
+  }
+
+  .grid {
+    flex-direction: column;
+  }
+
+  
+
+  .features {
+    width: 100%;
+  }
+
+  .viagens img {
+    max-width: 80%;
   }
 }
 

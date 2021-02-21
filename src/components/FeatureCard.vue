@@ -32,7 +32,6 @@ $tetosPrimary: #6d1112;
 	padding: 20px;
 	text-align: center;
 	margin: 10px;
-    box-shadow: -4px -4px 15px rgba(255,255,255,1) , 4px 4px 15px rgba(0,0,0,0.1);
 
     i {
         font-size: 50px;
