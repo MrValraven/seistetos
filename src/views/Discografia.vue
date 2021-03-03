@@ -1,8 +1,8 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
-    <NavbarMobile v-if="mobileMode && isAtTop" />
+    <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
-    <Hero :backgroundImage="getImgURL('tetosSeixas.webp')" title="Discografia" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
+    <Hero :backgroundImage="getImgURL('tetosSeixas.webp')" title="Discografia" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".ourSongs" />
     <section class="ourSongs">
         <ul class="indice">
             <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>DISCOGRAFIA</span></i>
@@ -42,6 +42,7 @@ export default defineComponent({
   },
   data() {
     return {
+        activatedNavbar: false,
         isAtTop: true,
         mobileMode: false,
         showingCD1: true,

@@ -1,8 +1,8 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToel('body')"/>
-    <NavbarMobile v-if="mobileMode && isAtTop" />
+    <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
-    <Hero :backgroundImage="getImgURL('tetosBilhar.webp')" title="Quem somos?" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
+    <Hero :backgroundImage="getImgURL('tetosBilhar.webp')" title="Quem somos?" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".members" />
     <section class="members">
         <ul class="indice">
             <li><a @click="showFundadores()">🍷 FUNDADORES</a></li>
@@ -80,6 +80,7 @@ export default defineComponent({
   },
   data() {
     return {
+        activatedNavbar: false,
         isAtTop: true,
         mobileMode: false,
         showingFundadores: true,

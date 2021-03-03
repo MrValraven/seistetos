@@ -1,8 +1,8 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
-    <NavbarMobile v-if="mobileMode && isAtTop" />
+    <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
-    <Hero :backgroundImage="getImgURL('tetosArraiolos.webp')" title="Contactos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" />
+    <Hero :backgroundImage="getImgURL('tetosArraiolos.webp')" title="Contactos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".contacts"/>
     <section class="contacts">
         <h1>Apeitas-te?</h1>
         <p>
@@ -32,6 +32,7 @@ export default defineComponent({
     name: 'Contactos',
     data() {
         return {
+          activatedNavbar: false,
             isAtTop: true,
             mobileMode: false,
             contactInfo: [

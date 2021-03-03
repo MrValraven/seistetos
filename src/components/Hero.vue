@@ -5,6 +5,7 @@
         <h1> {{ title }}</h1>
 	    <h2> {{ subtitle }}</h2>
 		<ApeitaBtn v-if="callToAction" :callToAction="callToAction" @click="scrollToElement(destination)"/>
+        <DownButton v-if="!callToAction" @click="scrollToElement(destination)"/>
     </div>
   </section>
 </template>
@@ -13,6 +14,7 @@
 
 import { defineComponent } from 'vue';
 import ApeitaBtn from '../components/ApeitaBtn.vue';
+import DownButton from '../components/DownButton.vue';
 
 export default defineComponent({
   name: 'Hero',
@@ -25,6 +27,7 @@ export default defineComponent({
   },
   components: {
       ApeitaBtn,
+      DownButton,
   },
   methods: {
       scrollToElement(destination: string) {

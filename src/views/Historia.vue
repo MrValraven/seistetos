@@ -1,8 +1,8 @@
 <template>
   <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
-  <NavbarMobile v-if="mobileMode && isAtTop" />
+  <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar"/>
   <Navbar v-if="!mobileMode" />
-  <Hero :backgroundImage="getImgURL('tetosArena.webp')" title="A nossa História" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
+  <Hero :backgroundImage="getImgURL('tetosArena.webp')" title="A nossa História" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".ourStory" />
   <section class="ourStory">
     <ul class="indice">
       <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>HISTÓRIA</span></i>
@@ -26,7 +26,6 @@ import { defineComponent } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
-import ApeitaBtn from '../components/ApeitaBtn.vue';
 import TextCard from '../components/TextCard.vue';
 import ScrollToTopButton from '../components/ScrollToTopButton.vue';
 import Footer from '../components/Footer.vue';
@@ -35,6 +34,7 @@ export default defineComponent({
   name: 'Historia',
   data() {
     return {
+      activatedNavbar: false,
       isAtTop: true,
       mobileMode: false,
       showingFundacao: true,
@@ -76,7 +76,6 @@ export default defineComponent({
   components: {
     Navbar,
     NavbarMobile,
-    ApeitaBtn,
     ScrollToTopButton,
     TextCard,
     Hero,

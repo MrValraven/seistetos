@@ -9,7 +9,7 @@
         class="navLinks" 
         :class="isActive"
         >
-            <li v-for="(navlink, index) in navLinks" :key="navlink.id" :data-index="index"><router-link  :to="{ name: navlink.routeName }"> {{ navlink.routeText }}</router-link></li>
+            <li v-for="(navlink, index) in navLinks" :key="navlink.id" :data-index="index"><router-link :to="{ name: navlink.routeName }"> {{ navlink.routeText }}</router-link></li>
         </transition-group>
 
         <div class="burger" @click="toggleClass()">
@@ -25,18 +25,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent } from 'vue';
 import gsap from 'gsap';
 export default defineComponent({          
     setup() {
 
         const navLinks = [
-            {id: 0, routeAlexMahFriend: "/", routeText: "Home"},
-            {id: 1, routeAlexMahFriend: "Historia", routeText: "História"},
-            {id: 2, routeAlexMahFriend: "Eventos", routeText: "Eventos"},
-            {id: 3, routeAlexMahFriend: "Tetos", routeText: "Tetos"},
-            {id: 4, routeAlexMahFriend: "Discografia", routeText: "Discografia"},
-            {id: 5, routeAlexMahFriend: "Contactos", routeText: "Contactos"},
+            {id: 0, routeName: "Home", routeText: "Home"},
+            {id: 1, routeName: "Historia", routeText: "História"},
+            {id: 2, routeName: "Eventos", routeText: "Eventos"},
+            {id: 3, routeName: "Tetos", routeText: "Tetos"},
+            {id: 4, routeName: "Discografia", routeText: "Discografia"},
+            {id: 5, routeName: "Contactos", routeText: "Contactos"},
         ]
 
         const beforeEnter: any = (el: any) => {
@@ -70,11 +70,8 @@ export default defineComponent({
             this.toggle = !this.toggle;
             this.toggle ? this.newClass = "toggle" : this.newClass = "";
             this.toggle ? this.isActive = "isActive" : this.isActive = "";
-        }
+        },
     },
-    created() {
-        console.log("Hello alex");
-    }
 });
 </script>
 
@@ -115,6 +112,7 @@ body {
 	}
     
     .isActive {
+        position: fixed;
         transform: translateX(0%);
         display: flex;
         opacity: 1;
