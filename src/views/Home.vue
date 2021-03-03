@@ -1,6 +1,6 @@
 <template>
   <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
-  <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar" />
+  <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
   <Navbar v-if="!mobileMode" class="navbar" />
   <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" destination=".work" />
 

@@ -1,6 +1,6 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToel('body')"/>
-    <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar" />
+    <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosBilhar.webp')" title="Quem somos?" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".members" />
     <section class="members">

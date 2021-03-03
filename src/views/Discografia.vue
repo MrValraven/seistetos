@@ -1,6 +1,6 @@
 <template>
     <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
-    <NavbarMobile v-if="(mobileMode && isAtTop) || activatedNavbar" @click="activatedNavbar = !activatedNavbar" />
+    <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosSeixas.webp')" title="Discografia" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".ourSongs" />
     <section class="ourSongs">
