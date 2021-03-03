@@ -1,16 +1,15 @@
 <template>
     <nav class="mobileNav">
-        <transition-group 
+        <transition-group
+        v-if="isActive" 
+        appear
         tag="ul"
+        @before-enter="beforeEnter"
+        @enter="enter" 
         class="navLinks" 
         :class="isActive"
         >
-            <li><router-link to="/">Home</router-link></li>
-            <li><router-link :to="{ name: 'Historia' }">História</router-link></li>
-            <li><router-link :to="{ name: 'Eventos' }">Eventos</router-link></li>
-            <li><router-link :to="{ name: 'Tetos' }">Tetos</router-link></li>
-            <li><router-link :to="{ name: 'Discografia' }">Discografia</router-link></li>
-            <li><router-link :to="{ name: 'Contactos' }">Contactos</router-link></li>
+            <li v-for="(navlink, index) in navLinks" :key="navlink.id" :data-index="index"><router-link  :to="{ name: navlink.routeName }"> {{ navlink.routeText }}</router-link></li>
         </transition-group>
 
         <div class="burger" @click="toggleClass()">
@@ -26,29 +25,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import gsap from 'gsap';
-export default defineComponent({
-    /* setup() {
+export default defineComponent({          
+    setup() {
 
-        const beforeEnter = (element: any) => {
-            element.style.opacity = 0;
-            element.style.transform = 'translateX(100px)';
+        const navLinks = [
+            {id: 0, routeAlexMahFriend: "/", routeText: "Home"},
+            {id: 1, routeAlexMahFriend: "Historia", routeText: "História"},
+            {id: 2, routeAlexMahFriend: "Eventos", routeText: "Eventos"},
+            {id: 3, routeAlexMahFriend: "Tetos", routeText: "Tetos"},
+            {id: 4, routeAlexMahFriend: "Discografia", routeText: "Discografia"},
+            {id: 5, routeAlexMahFriend: "Contactos", routeText: "Contactos"},
+        ]
+
+        const beforeEnter: any = (el: any) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateX(-100px)';
         }
 
-        const enter = (element: any, done: any) => {
-            gsap.to(element, {
+        const enter: any = (el: any, done: any) => {
+            gsap.to(el, {
                 opacity: 1,
                 x: 0,
-                duration: 0.8,
+                duration: 0.2,
                 onComplete: done,
-                delay: 0.2,
-            })
+                delay: el.dataset.index * 0.05,
+            });
         }
 
-        return { beforeEnter, enter }
+        return { navLinks, beforeEnter, enter }
 
-    }, */
+    },
     name: "MobileNav",
     data() {
         return {
@@ -63,6 +71,9 @@ export default defineComponent({
             this.toggle ? this.newClass = "toggle" : this.newClass = "";
             this.toggle ? this.isActive = "isActive" : this.isActive = "";
         }
+    },
+    created() {
+        console.log("Hello alex");
     }
 });
 </script>
