@@ -1,6 +1,6 @@
 <template>
-  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-  <NavbarMobile v-if="mobileMode" />
+  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
+  <NavbarMobile v-if="mobileMode && isAtTop" />
   <Navbar v-if="!mobileMode" />
   <Hero :backgroundImage="getImgURL('tetosArena.webp')" title="A nossa História" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
   <section class="ourStory">
@@ -11,7 +11,7 @@
       <li><a @click="showTaberna()">IN TABERNA</a></li>
       <li><a @click="showAtualidade()">ATUALIDADE</a></li>
     </ul>
-    <div>
+    <div class="textcard">
       <TextCard v-if="showingFundacao" :title="epocas[0].title" :firstText="epocas[0].firstText" :secondText="epocas[0].secondText" :thirdText="epocas[0].thirdText" :imgPath="getImgURL(epocas[0].imgPath)"/>
       <TextCard v-if="showingNatalejo" :title="epocas[1].title" :fmirstText="epocas[1].firstText" :secondText="epocas[1].secondText" :thirdText="epocas[1].thirdText" :imgPath="getImgURL(epocas[1].imgPath)"/>
       <TextCard v-if="showingTaberna" :title="epocas[2].title" :firstText="epocas[2].firstText" :secondText="epocas[2].secondText" :thirdText="epocas[2].thirdText" :imgPath="getImgURL(epocas[2].imgPath)"/>
@@ -103,7 +103,7 @@ export default defineComponent({
       }
     },
     handleScroll () {
-      window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+      window.pageYOffset >= 250 ? this.isAtTop = false : this.isAtTop = true;
     },
     handleResize () {
       this.mobileMode = window.innerWidth <= 1015;
@@ -201,6 +201,34 @@ export default defineComponent({
       }
     }
   }
+}
+
+@media (max-width: 700px) {
+
+    .ourStory {
+      flex-direction: column;
+      padding: 50px 10px;
+
+      .indice {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        li {
+          padding: 10px 30px 10px 30px;
+          border-radius: 45px;
+          box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        i span {
+          margin-right: 0;
+        }
+      }
+      .textcard {
+        margin-top: 30px
+      }
+    }
 }
 
 </style>

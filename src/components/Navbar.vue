@@ -69,7 +69,7 @@ export default defineComponent({
           color: #ffffff;
 
           &.router-link-exact-active {
-            color: #42b983;
+            border-bottom: 1px solid white;
           }
         }  
       }

@@ -1,9 +1,9 @@
 <template>
-  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-  <NavbarMobile v-if="mobileMode" />
+  <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
+  <NavbarMobile v-if="mobileMode && isAtTop"  />
   <Navbar v-if="!mobileMode" />
   <Hero :backgroundImage="getImgURL('tetosMatriculas.webp')" title="Os nossos Eventos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
-  <section class="ourStory">
+  <section class="ourEvents">
     <ul class="indice">
       <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>EVENTOS</span></i>
       <li><a @click="showBadalo()">BADALO</a></li>
@@ -14,7 +14,7 @@
       <li><a @click="showCarrossel()">CARROSSEL MÁGICO</a></li>
       <li><a @click="showCantar()">CANTAR ENTRE MESTRES E APRENDIZES</a></li>
     </ul>
-    <div>
+    <div class="textcard">
         <TextCard v-if="showingDefault" :title="epocas[0].title" :firstText="epocas[0].firstText" :secondText="epocas[0].secondText" :thirdText="epocas[0].thirdText" :imgPath="getImgURL(epocas[0].imgPath)"/>
         <TextCard v-if="showingBadalo" :title="epocas[1].title" :firstText="epocas[1].firstText" :secondText="epocas[1].secondText" :thirdText="epocas[1].thirdText" :imgPath="getImgURL(epocas[1].imgPath)">
           <template v-slot:secondTitle>
@@ -161,7 +161,7 @@ export default defineComponent({
       }
     },
     handleScroll () {
-      window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+      window.pageYOffset >= 250 ? this.isAtTop = false : this.isAtTop = true;
     },
     handleResize () {
       this.mobileMode = window.innerWidth <= 1015;
@@ -241,5 +241,96 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+.ourEvents {
+  display: flex;
+	flex-direction: row;
+  align-items: flex-start;
+  background-color: #f7f7f7;
+  padding-top: 145px;
 
+  .indice {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-width: 40%;
+    font-size: 25px;
+
+    i {
+      width: 100%;
+      font-size: 30px;
+      padding: 15px;
+    
+      span {
+        font-family: sans-serif;
+        margin-left: 10px;
+        margin-right: 50px;
+        letter-spacing: 5px;
+      }
+    }
+
+    li {
+      width: 90%;
+      padding: 10px 30px 0 30px;
+    } 
+
+    a {
+      font-size: 24px;
+      color: #555;
+      display: inline-block;
+      position: relative;
+      padding: 10px;
+  
+      &:hover {
+        scale: 0.98;
+
+        &:before {
+          color: #000000;
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color:  #6d1112;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+
+    .ourEvents {
+      flex-direction: column;
+      padding: 50px 10px;
+
+      .indice {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+
+        li {
+          padding: 10px 30px 10px 30px;
+          border-radius: 45px;
+          box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        i span {
+          margin-right: 0;
+        }
+      }
+      .textcard {
+        margin-top: 30px
+      }
+    }
+}
 </style>

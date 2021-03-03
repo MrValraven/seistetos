@@ -1,6 +1,6 @@
 <template>
-    <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-    <NavbarMobile v-if="mobileMode" />
+    <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
+    <NavbarMobile v-if="mobileMode && isAtTop" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosBilhar.webp')" title="Quem somos?" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
     <section class="members">
@@ -102,7 +102,7 @@ export default defineComponent({
             {id: 8, nome: "Henrique Gil", alcunha: "Camões", instrumento: "Bombo", curso: "Ciências e Tecnologia Animal", anoDeEntrada: "2016", imagem: "formacaoAtual/henriqueGil.webp", },
             {id: 9, nome: "João Figueiredo", alcunha: "Tozinho, Alzheimer", instrumento: "Bandolim", curso: "Biologia", anoDeEntrada: "2016", imagem: "formacaoAtual/joaoFigueiredo.webp", },
             {id: 10, nome: "João Seixas", alcunha: "Wolverine", instrumento: "Guitarra", curso: "Economia", anoDeEntrada: "2016", imagem: "seixas.webp", },
-            {id: 11, nome: "Joaquim Rosa", alcunha: "Bomba", instrumento: "Cavaquinho", curso: "Biotecnolia", anoDeEntrada: "2016", imagem: "formacaoAtual/joaquimRosa.webp", },
+            {id: 11, nome: "Joaquim Rosa", alcunha: "Bomba", instrumento: "Cavaquinho", curso: "Biotecnologia", anoDeEntrada: "2016", imagem: "formacaoAtual/joaquimRosa.webp", },
             {id: 12, nome: "Nuno Serôdio", alcunha: "Caçador", instrumento: "Guitarra", curso: "Línguas e Literatura", anoDeEntrada: "2016", imagem: "serodio.webp", },
             {id: 13, nome: "Rúben Duarte", alcunha: "Pizzi", instrumento: "Pandeireta / Cavaquinho", curso: "Bioquímica", anoDeEntrada: "2016", imagem: "formacaoAtual/rubenDuarte.webp", },
             {id: 14, nome: "Rui Patinhas", alcunha: "Herói", instrumento: "Cavaquinho", curso: "Engenharia Informática", anoDeEntrada: "2016", imagem: "formacaoAtual/ruiPatinhas.webp", },
@@ -128,7 +128,7 @@ export default defineComponent({
         }
     },
     handleScroll () {
-        window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+        window.pageYOffset >= 250 ? this.isAtTop = false : this.isAtTop = true;
     },
     handleResize () {
         this.mobileMode = window.innerWidth <= 1015;

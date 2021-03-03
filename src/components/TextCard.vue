@@ -66,4 +66,24 @@ export default defineComponent({
     }
 
 }
+
+@media (max-width:700px) {
+    .epoca{
+
+        .titulo {
+            padding-right: 0px;
+        }
+
+        p {
+            text-indent: 0px;
+        }
+
+        .text {
+            text-align: justify;
+        }
+       
+    }
+}
+
+
 </style>

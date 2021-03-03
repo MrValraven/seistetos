@@ -1,16 +1,22 @@
 <template>
     <nav class="mobileNav">
-        <ul class="navLinks" :class="isActive">
+        <transition-group 
+        tag="ul"
+        @before-enter="beforeEnter"
+        @enter="enter"
+        class="navLinks" 
+        :class="isActive"
+        >
             <li><router-link to="/">Home</router-link></li>
-            <li><router-link :to="{ name: 'Historia' }">Historia</router-link></li>
+            <li><router-link :to="{ name: 'Historia' }">História</router-link></li>
             <li><router-link :to="{ name: 'Eventos' }">Eventos</router-link></li>
             <li><router-link :to="{ name: 'Tetos' }">Tetos</router-link></li>
             <li><router-link :to="{ name: 'Discografia' }">Discografia</router-link></li>
             <li><router-link :to="{ name: 'Contactos' }">Contactos</router-link></li>
-        </ul>
+        </transition-group>
 
         <div class="burger" @click="toggleClass()">
-            <div class="burgerText">MENU</div>
+            <div v-if="!isActive" class="burgerText">MENU</div>
             <div class="drawing" :class="newClass">
                 <div class="line1"></div>
                 <div class="line2"></div>
@@ -22,8 +28,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+import gsap from 'gsap';
 export default defineComponent({
+    setup() {
+
+        const beforeEnter = (element: any) => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateX(100px)';
+        }
+
+        const enter = (element: any, done: any) => {
+            gsap.to(element, {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                onComplete: done,
+                delay: 0.2,
+            })
+        }
+
+        return { beforeEnter, enter }
+
+    },
     name: "MobileNav",
     data() {
         return {
@@ -86,13 +113,14 @@ body {
 
     .burger {
         display: flex;
+        align-items: center;
         cursor: pointer;
         position: fixed;
         top: 20px;
         right: 20px;
 
         .burgerText {
-            font-size: 25px;
+            font-size: 20px;
             letter-spacing: 3px;
         }
 

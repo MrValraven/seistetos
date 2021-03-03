@@ -35,14 +35,6 @@ export default defineComponent({
 	align-items: center;
 	width: 100%;
 	margin: 0px 20px;
-	box-shadow: -7px -7px 20px 0px #fff9,
-    -4px -4px 5px 0px #fff9,
-    7px 7px 20px 0px #0002,
-    4px 4px 5px 0px #0001,
-    inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001,
-    inset 0px 0px 0px 0px #fff9,
-    inset 0px 0px 0px 0px #0001;
 
     .icon {
         width: 60px;
@@ -72,6 +64,16 @@ export default defineComponent({
 	            scale: 1.5; 
             }
         }
+    }
+
+    .cardtext {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 700px) {
+    .cardtext {
+        font-size: 20px;
     }
 }
 

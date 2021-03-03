@@ -1,6 +1,6 @@
 <template>
-    <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('.header')"/>
-    <NavbarMobile v-if="mobileMode" />
+    <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
+    <NavbarMobile v-if="mobileMode && isAtTop" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosArraiolos.webp')" title="Contactos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" />
     <section class="contacts">
@@ -71,7 +71,7 @@ export default defineComponent({
       }
     },
     handleScroll () {
-      window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+      window.pageYOffset >= 250 ? this.isAtTop = false : this.isAtTop = true;
     },
     handleResize () {
         this.mobileMode = window.innerWidth <= 1015;
@@ -107,6 +107,28 @@ export default defineComponent({
 
   .cards {
     display: flex;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .contacts {
+    padding: 0px;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 20px;
+      text-align: justify;
+    }
+
+    .cards {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
   }
 }
 

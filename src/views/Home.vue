@@ -1,8 +1,8 @@
 <template>
   <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
-  <NavbarMobile v-if="mobileMode" />
+  <NavbarMobile v-if="mobileMode && isAtTop" />
   <Navbar v-if="!mobileMode" class="navbar" />
-  <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
+  <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" destination=".work" />
 
   <section class="work">
     <div class="info">
@@ -116,7 +116,7 @@ export default defineComponent({
       }
     },
     handleScroll () {
-      window.pageYOffset >= 100 ? this.isAtTop = false : this.isAtTop = true;
+      window.pageYOffset >= 250 ? this.isAtTop = false : this.isAtTop = true;
     },
     handleResize () {
       this.mobileMode = window.innerWidth <= 1015;

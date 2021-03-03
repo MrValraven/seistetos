@@ -4,7 +4,7 @@
     <div class="heroContent">
         <h1> {{ title }}</h1>
 	    <h2> {{ subtitle }}</h2>
-		<ApeitaBtn v-if="callToAction" :callToAction="callToAction" />
+		<ApeitaBtn v-if="callToAction" :callToAction="callToAction" @click="scrollToElement(destination)"/>
     </div>
   </section>
 </template>
@@ -17,6 +17,7 @@ import ApeitaBtn from '../components/ApeitaBtn.vue';
 export default defineComponent({
   name: 'Hero',
   props: {
+      destination: String,
       backgroundImage: String,
       title: String,
       subtitle: String,
@@ -24,6 +25,15 @@ export default defineComponent({
   },
   components: {
       ApeitaBtn,
+  },
+  methods: {
+      scrollToElement(destination: string) {
+      const element = document.querySelector(destination);
+
+      if (element) {
+        element.scrollIntoView({behavior: 'smooth'});
+      }
+    },
   },
   computed: {
       style () :String {
