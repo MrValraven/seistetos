@@ -2,8 +2,6 @@
     <nav class="mobileNav">
         <transition-group 
         tag="ul"
-        @before-enter="beforeEnter"
-        @enter="enter"
         class="navLinks" 
         :class="isActive"
         >
@@ -31,7 +29,7 @@
 import { defineComponent } from 'vue';
 import gsap from 'gsap';
 export default defineComponent({
-    setup() {
+    /* setup() {
 
         const beforeEnter = (element: any) => {
             element.style.opacity = 0;
@@ -50,7 +48,7 @@ export default defineComponent({
 
         return { beforeEnter, enter }
 
-    },
+    }, */
     name: "MobileNav",
     data() {
         return {

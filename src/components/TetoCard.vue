@@ -1,9 +1,9 @@
 <template>
     <li class="card">
-				<img class="avatar" :src="ImgPath" alt="">
-				<p class="quote"> {{ quote }} </p>
-				<p class="author"> {{ author }} </p>
-			</li>
+		<img class="avatar" :src="ImgPath" alt="">
+		<p class="quote"> {{ quote }} </p>
+		<p class="author"> {{ author }} </p>
+	</li>
 </template>
 
 <script lang="ts">

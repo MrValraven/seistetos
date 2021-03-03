@@ -1,5 +1,5 @@
 <template>
-    <ScrollToTopButton v-if="!isAtTop"  @click="scrollToElement('body')"/>
+    <ScrollToTopButton v-if="!isAtTop"  @click="scrollToel('body')"/>
     <NavbarMobile v-if="mobileMode && isAtTop" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosBilhar.webp')" title="Quem somos?" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" />
@@ -9,16 +9,34 @@
             <li><a @click="showVelha()">🥃 VELHA GUARDA</a></li>
             <li><a @click="showAtual()">🍻 FORMAÇÃO ATUAL</a></li>
         </ul>
-        <div class="container">
-            <div v-if="showingFundadores">
-                <MembroCard v-for="fundador in fundadores" :key="fundador.id" :nome="fundador.nome" :alcunha="fundador.alcunha" :instrumento="fundador.instrumento" :curso="fundador.curso" :ano="fundador.anoDeEntrada" :imgPath="getImgURL(fundador.imagem)" />
-            </div>
-            <div v-if="showingVelha">
-                <MembroCard v-for="velha in velhaGuarda" :key="velha.id" :nome="velha.nome" :alcunha="velha.alcunha" :instrumento="velha.instrumento" :curso="velha.curso" :ano="velha.anoDeEntrada" :imgPath="getImgURL(velha.imagem)" />
-            </div>
-            <div v-if="showingAtual">
-                <MembroCard v-for="atual in formacaoAtual" :key="atual.id" :nome="atual.nome" :alcunha="atual.alcunha" :instrumento="atual.instrumento" :curso="atual.curso" :ano="atual.anoDeEntrada" :imgPath="getImgURL(atual.imagem)" />
-            </div>
+        <div class="container"  >
+            <transition-group 
+            appear          
+            @before-enter="beforeEnter"
+            @enter="enter" 
+            tag="div" 
+            v-if="showingFundadores" 
+            >  
+                <MembroCard v-for="( fundador, index ) in fundadores" :key="fundador.id" :data-index="index" :nome="fundador.nome" :alcunha="fundador.alcunha" :instrumento="fundador.instrumento" :curso="fundador.curso" :ano="fundador.anoDeEntrada" :imgPath="getImgURL(fundador.imagem)" />
+            </transition-group>
+            <transition-group 
+            appear          
+            @before-enter="beforeEnter"
+            @enter="enter" 
+            tag="div" 
+            v-if="showingVelha" 
+            > 
+                <MembroCard v-for="( velha, index ) in velhaGuarda" :key="velha.id" :data-index="index" :nome="velha.nome" :alcunha="velha.alcunha" :instrumento="velha.instrumento" :curso="velha.curso" :ano="velha.anoDeEntrada" :imgPath="getImgURL(velha.imagem)" />
+            </transition-group>
+            <transition-group 
+            appear          
+            @before-enter="beforeEnter"
+            @enter="enter" 
+            tag="div"
+            v-if="showingAtual"
+            >
+                <MembroCard v-for="(atual, index ) in formacaoAtual" :key="atual.id" :data-index="index" :nome="atual.nome" :alcunha="atual.alcunha" :instrumento="atual.instrumento" :curso="atual.curso" :ano="atual.anoDeEntrada" :imgPath="getImgURL(atual.imagem)" />
+            </transition-group>
         </div>
     </section>
 </template>
@@ -30,9 +48,29 @@ import Navbar from '../components/Navbar.vue';
 import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
 import MembroCard from '../components/MembroCard.vue';
+import gsap from 'gsap';
 
 export default defineComponent({
   name: 'Tetos',
+  setup() {
+
+    const beforeEnter: any = (el: any) => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateX(-50px)';
+    }
+
+    const enter: any = (el: any, done: any) => {
+        gsap.to(el, {
+            opacity: 1,
+            x: 0,
+            duration: 0.2,
+            onComplete: done,
+            delay: el.dataset.index * 0.2,
+        });
+    }
+
+        return { beforeEnter, enter }
+  },
   components: {
     ScrollToTopButton,
     Navbar,
@@ -120,11 +158,11 @@ export default defineComponent({
     getImgURL(image: String) {
         return require('../assets/media/' + image);
     },
-    scrollToElement(destination: string) {
-        const element = document.querySelector(destination);
+    scrollToel(destination: string) {
+        const el = document.querySelector(destination);
 
-        if (element) {
-            element.scrollIntoView({behavior: 'smooth'});
+        if (el) {
+            el.scrollIntoView({behavior: 'smooth'});
         }
     },
     handleScroll () {
@@ -148,6 +186,8 @@ export default defineComponent({
         this.showingVelha = false;
         this.showingAtual = true;
     },
+
+    
   },
     created() {
         window.addEventListener('scroll', this.handleScroll);
@@ -243,10 +283,15 @@ export default defineComponent({
 
     .container {
         display: flex;
+        flex-direction: row;
+
+        ul {
+            display: flex;
+        }
 
         div {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap;  
             justify-content: center;
         }
     }
