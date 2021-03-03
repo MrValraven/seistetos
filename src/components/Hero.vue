@@ -83,7 +83,7 @@ export default defineComponent({
         justify-content: center;
         align-items: center;
         opacity: 0;
-        animation: 1s slidefade 00.5s forwards;
+        animation: 0.8s slidefade 00.5s forwards;
 
         h1{
             font: bold 60px 'Open Sans', sans-serif;

@@ -65,7 +65,7 @@ export default defineComponent({
             x: 0,
             duration: 0.2,
             onComplete: done,
-            delay: el.dataset.index * 0.2,
+            delay: el.dataset.index * 0.1,
         });
     }
 
