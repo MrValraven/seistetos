@@ -4,7 +4,7 @@
   <Navbar v-if="!mobileMode" class="navbar" />
   <Hero :backgroundImage="getImgURL('tetosRececao.webp')" title="Grupo Académico Seistetos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" callToAction="Apeitas-te?" destination=".work" />
 
-  <section class="work">
+  <section v-if="(!activatedNavbar)" class="work">
     <div class="info">
       <h3 class="title">In Taberna</h3>
 		  <p>O Grupo Académico Seistetos surge no panorama musical da Universidade de Évora em 1992, 
@@ -19,7 +19,7 @@
     </div>
 	</section>
 	
-<section class="features">
+<section  v-if="(!activatedNavbar)" class="features">
 		<h3 class="title">Noites Boémias</h3>
 		<p>Como nem só de trabalho e estudo vive o estudante, o Grupo Académico Seistetos convida-te a conhecer o lado boémio da vida universitária!</p>
 		<hr>
@@ -34,7 +34,7 @@
     </div>
 	</section>
 
-	<section class="reviews">
+	<section  v-if="(!activatedNavbar)" class="reviews">
 
 		<h3 class="title">A Vida de Estudante</h3>
 		<hr>
@@ -46,14 +46,14 @@
 	
 	</section>
 
-	<section id ="contacto" class="contact">
+	<section  v-if="(!activatedNavbar)" id ="contacto" class="contact">
 		<h3 class="title">Apeitas-te?</h3>	
 		<p>Tens vontade de aprender, orgulho para demonstrar o teu espirito académico, um estomâgo e fígado impertubável? Estás pronto para sair para a rua, cantar as nossas canções, trovando à luz da lua para conquistar corações?</p>
 		<hr>
 
 		<router-link class="routerLink" :to="{ name: 'Contactos' }" ><ApeitaBtn callToAction="Contacta-nos!" /></router-link>
 	</section>
-  <Footer />
+  <Footer  v-if="(!activatedNavbar)" />
 </template>
 
 <script lang="ts">

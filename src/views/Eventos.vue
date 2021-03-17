@@ -3,7 +3,7 @@
   <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
   <Navbar v-if="!mobileMode" />
   <Hero :backgroundImage="getImgURL('tetosMatriculas.webp')" title="Os nossos Eventos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".ourEvents"/>
-  <section class="ourEvents">
+  <section v-if="(!activatedNavbar)" class="ourEvents">
     <ul class="indice">
       <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>EVENTOS</span></i>
       <li><a @click="showBadalo(); scrollToElementMobile('.epoca')">BADALO</a></li>
@@ -43,7 +43,7 @@
         <TextCard v-if="showingCantar" :title="epocas[7].title" :firstText="epocas[7].firstText" :secondText="epocas[7].secondText" :thirdText="epocas[7].thirdText" :imgPath="getImgURL(epocas[7].imgPath)"/>
     </div>
   </section>
-  <Footer />
+  <Footer v-if="(!activatedNavbar)" />
 </template>
 
 <script lang="ts">

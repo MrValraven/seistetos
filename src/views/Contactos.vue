@@ -3,7 +3,7 @@
     <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosArraiolos.webp')" title="Contactos" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".contacts"/>
-    <section class="contacts">
+    <section v-if="(!activatedNavbar)" class="contacts">
         <h1>Apeitas-te?</h1>
         <p>
             Também queres fazer parte desta experiência única e da grande familia que é o Grupo Académico Seistetos?
@@ -14,7 +14,7 @@
         </div>
         
     </section>
-    <Footer />
+    <Footer v-if="(!activatedNavbar)" />
 </template>
 
 <script lang="ts">

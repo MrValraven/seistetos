@@ -3,7 +3,7 @@
     <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosSeixas.webp')" title="Discografia" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".ourSongs" />
-    <section class="ourSongs">
+    <section v-if="(!activatedNavbar)" class="ourSongs">
         <ul class="indice">
             <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>DISCOGRAFIA</span></i>
             <li><a @click="showCD1()">CD.1 - ANDA KÁ K'EU NÃTALÊJO</a></li>
@@ -16,7 +16,7 @@
             <TextCard v-if="showingSingteto" :title="cds[2].title" :firstText="cds[2].firstText" :secondText="cds[2].secondText" :thirdText="cds[2].thirdText" :imgPath="getImgURL(cds[2].imgPath)"/>
         </div>
     </section>
-    <Footer />
+    <Footer v-if="(!activatedNavbar)" />
 </template>
 
 <script lang="ts">

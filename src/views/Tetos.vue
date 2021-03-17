@@ -3,7 +3,7 @@
     <NavbarMobile v-if="(mobileMode && isAtTop) || (activatedNavbar && mobileMode)" @click="activatedNavbar = !activatedNavbar" />
     <Navbar v-if="!mobileMode" />
     <Hero :backgroundImage="getImgURL('tetosBilhar.webp')" title="Quem somos?" subtitle="Honesta Açorda com Muito Bacalhau Misturado" destination=".members" />
-    <section class="members">
+    <section v-if="(!activatedNavbar)" class="members">
         <ul class="indice">
             <li><a @click="showFundadores()">🍷 FUNDADORES</a></li>
             <li><a @click="showVelha()">🥃 VELHA GUARDA</a></li>
@@ -39,6 +39,7 @@
             </transition-group>
         </div>
     </section>
+    <Footer v-if="(!activatedNavbar)" />
 </template>
 
 <script lang="ts">
@@ -48,6 +49,7 @@ import Navbar from '../components/Navbar.vue';
 import NavbarMobile from '../components/NavbarMobile.vue';
 import Hero from '../components/Hero.vue';
 import MembroCard from '../components/MembroCard.vue';
+import Footer from '../components/Footer.vue';
 import gsap from 'gsap';
 
 export default defineComponent({
@@ -76,7 +78,8 @@ export default defineComponent({
     Navbar,
     NavbarMobile,
     Hero,
-    MembroCard
+    MembroCard,
+    Footer,
   },
   data() {
     return {
