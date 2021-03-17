@@ -41,7 +41,7 @@ export default defineComponent({
     .titulo {
         font-size: 36px;
         padding-left: 20px;
-        text-align: center;
+        text-align: left;
         margin-bottom: 10px;
     }
 

@@ -6,13 +6,13 @@
   <section class="ourEvents">
     <ul class="indice">
       <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>EVENTOS</span></i>
-      <li><a @click="showBadalo()">BADALO</a></li>
-      <li><a @click="showBaile()">BAILE DO BICHO</a></li>
-      <li><a @click="showCaminhada()">A GRANDIOSA CAMINHADA PARA A MITRA</a></li>
-      <li><a @click="showMagusto()">MAGUSTO DE S.TETINHO</a></li>
-      <li><a @click="showLentrisco()">FESTA DO LENTRISCO</a></li>
-      <li><a @click="showCarrossel()">CARROSSEL MÁGICO</a></li>
-      <li><a @click="showCantar()">CANTAR ENTRE MESTRES E APRENDIZES</a></li>
+      <li><a @click="showBadalo(); scrollToElementMobile('.epoca')">BADALO</a></li>
+      <li><a @click="showBaile(); scrollToElementMobile('.epoca')">BAILE DO BICHO</a></li>
+      <li><a @click="showCaminhada(); scrollToElementMobile('.epoca')">A GRANDIOSA CAMINHADA PARA A MITRA</a></li>
+      <li><a @click="showMagusto(); scrollToElementMobile('.epoca')">MAGUSTO DE S.TETINHO</a></li>
+      <li><a @click="showLentrisco(); scrollToElementMobile('.epoca')">FESTA DO LENTRISCO</a></li>
+      <li><a @click="showCarrossel(); scrollToElementMobile('.epoca')">CARROSSEL MÁGICO</a></li>
+      <li><a @click="showCantar(); scrollToElementMobile('.epoca')">CANTAR ENTRE MESTRES E APRENDIZES</a></li>
     </ul>
     <div class="textcard">
         <TextCard v-if="showingDefault" :title="epocas[0].title" :firstText="epocas[0].firstText" :secondText="epocas[0].secondText" :thirdText="epocas[0].thirdText" :imgPath="getImgURL(epocas[0].imgPath)"/>
@@ -161,6 +161,14 @@ export default defineComponent({
         element.scrollIntoView({behavior: 'smooth'});
       }
     },
+    scrollToElementMobile(destination: string) {
+      const element = document.querySelector(destination);
+
+      if (element && this.mobileMode) {
+        element.scrollIntoView({behavior: 'smooth'});
+       
+      }
+    },
     handleScroll () {
       window.pageYOffset >= 250 ? this.isAtTop = false : this.isAtTop = true;
     },
@@ -305,33 +313,42 @@ export default defineComponent({
       }
     }
   }
+
+  h2 {
+    margin-top: 25px;
+    text-indent: 30px;
+  }
 }
 
 @media (max-width: 700px) {
 
-    .ourEvents {
-      flex-direction: column;
-      padding: 50px 10px;
+  .ourEvents {
+    flex-direction: column;
+    padding: 50px 10px;
 
-      .indice {
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 100%;
+    .indice {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
 
-        li {
-          padding: 10px 30px 10px 30px;
-          border-radius: 45px;
-          box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        i span {
-          margin-right: 0;
-        }
+      li {
+        padding: 10px 30px 10px 30px;
+        border-radius: 45px;
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1);
       }
-      .textcard {
-        margin-top: 30px
+
+      i span {
+        margin-right: 0;
       }
     }
+
+    .textcard {
+      margin-top: 30px
+    }
+    h2 {
+      text-indent: 0px;
+    }
+  }
 }
 </style>

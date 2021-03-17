@@ -6,10 +6,10 @@
   <section class="ourStory">
     <ul class="indice">
       <i class="fa fa-arrow-circle-down" aria-hidden="true"><span>HISTÓRIA</span></i>
-      <li><a @click="showFundacao()">FUNDAÇÃO</a></li>
-      <li><a @click="showNatalejo()">ANDA KÁ K'EU NÃTALÊJO</a></li>
-      <li><a @click="showTaberna()">IN TABERNA</a></li>
-      <li><a @click="showAtualidade()">ATUALIDADE</a></li>
+      <li><a @click="showFundacao(); scrollToElementMobile('.epoca')">FUNDAÇÃO</a></li>
+      <li><a @click="showNatalejo(); scrollToElementMobile('.epoca')">ANDA KÁ K'EU NÃTALÊJO</a></li>
+      <li><a @click="showTaberna(); scrollToElementMobile('.epoca')">IN TABERNA</a></li>
+      <li><a @click="showAtualidade(); scrollToElementMobile('.epoca')">ATUALIDADE</a></li>
     </ul>
     <div class="textcard">
       <TextCard v-if="showingFundacao" :title="epocas[0].title" :firstText="epocas[0].firstText" :secondText="epocas[0].secondText" :thirdText="epocas[0].thirdText" :imgPath="getImgURL(epocas[0].imgPath)"/>
@@ -64,7 +64,7 @@ export default defineComponent({
           imgPath:'tetosCD2.webp',
         },
         { id: 4,
-          title: "Atualiade", 
+          title: "Atualidade", 
           firstText:'Hoje em dia o Grupo Académico Seistetos continua a participar em atuações e a distribuir as suas famosas "Palmadas" por todo o país. É responsável por diversos eventos que enaltecem a vida e tradição académicas da Universidade de Évora, é convidado a animar instituições, como lares de idosos e escolas, e não deixa de marcar presença na vida noturna dos estudantes.', 
           secondText:'', 
           thirdText:'',
@@ -98,6 +98,13 @@ export default defineComponent({
       const element = document.querySelector(destination);
 
       if (element) {
+        element.scrollIntoView({behavior: 'smooth'});
+      }
+    },
+    scrollToElementMobile(destination: string) {
+      const element = document.querySelector(destination);
+
+      if (element && this.mobileMode) {
         element.scrollIntoView({behavior: 'smooth'});
       }
     },

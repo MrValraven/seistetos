@@ -177,9 +177,18 @@ section{
   flex-direction: row;
   justify-content: space-around;
 
+  
   .info {
     min-width: 50%;
     margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    
+    .title {
+      max-width: 800px;
+      display: flex;
+      justify-content: center;
+    }
   }
 
  .viagens {
@@ -225,12 +234,19 @@ section{
 }
 
 @media (max-width: 1015px) {
+
   section {
     padding: 10px 10px;
   }
+
   .work {
     flex-direction: column;
     justify-content: center;
+
+    .title {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
     .info {
         width: 100%;
