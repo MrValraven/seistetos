@@ -111,6 +111,10 @@ export default defineComponent({
     },
     handleResize () {
         this.mobileMode = window.innerWidth <= 1015;
+
+        if(!this.mobileMode) {
+            this.activatedNavbar = false;
+        } 
     },
     showCD1() {
         this.showingCD1 = true;
