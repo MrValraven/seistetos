@@ -105,9 +105,10 @@ export default defineComponent({
   }
 
   p {
-    font-size: 25px;
+    font-size: 18px;
 	  margin-bottom: 50px;
-	  min-width: 70%;
+	  padding: 0 10vw;
+    min-width: 70%;
   }
 
   .cards {
@@ -115,10 +116,10 @@ export default defineComponent({
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
 
   .contacts {
-    padding: 0px;
+    padding: 30px;
 
     h1 {
       font-size: 36px;
@@ -126,7 +127,6 @@ export default defineComponent({
 
     p {
       font-size: 20px;
-      text-align: justify;
     }
 
     .cards {

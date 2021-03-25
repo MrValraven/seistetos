@@ -7,7 +7,7 @@
 			<li><a class="icon" id="spotify" href="https://open.spotify.com/artist/6UytzMPJfPy7zHhPXTDMvr?si=ZE2jZQWPQiShPtvbs0WjOg"><i  class="fa fa-spotify"></i></a></li>
 		</ul>
 		<p class="moto">A chumbar a Maria desde 1992</p>
-		<p>Developed with 🍷 by <a href="https://www.linkedin.com/in/tiago-costa-b141121b1/" target="_blank" rel="noopener">Tiago "Papasmurf" Costa</a>.</p>
+		<p>Developed with 🍷 by <a href="https://www.linkedin.com/in/tiago-costa-b141121b1/" target="_blank" rel="noopener">Tiago Costa</a>.</p>
 	</footer>
 </template>
 
