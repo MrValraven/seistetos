@@ -1,6 +1,6 @@
 <template>
     <ul class="box">
-        <a :href="link">
+        <a :href="link" target="_blank">
             <li class="icon">
                 <i :class="icon" aria-hidden="true"></i>
             </li>

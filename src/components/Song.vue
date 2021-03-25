@@ -1,9 +1,9 @@
 <template>
     <li class="song"> {{ nomeMusica }}
-        <a v-if="spotify" :href="spotify">
+        <a v-if="spotify" :href="spotify" target="_blank">
             <i class="fa fa-spotify"></i>
         </a>
-        <a v-if="youtube" :href="youtube">
+        <a v-if="youtube" :href="youtube" target="_blank">
             <i class="fa fa-youtube-play"></i>
         </a>
     </li>

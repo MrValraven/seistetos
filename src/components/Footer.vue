@@ -1,10 +1,10 @@
 <template>
     <footer>
 		<ul>
-			<li><a class="icon" id="instagram" href="https://www.instagram.com/seistetos/"><i class="fa fa-instagram"></i></a></li>
-			<li><a class="icon" id="facebook" href="https://www.facebook.com/grupoacademicoseistetos"><i class="fa fa-facebook-square"></i></a></li>
-			<li><a class="icon" id="youtube" href="https://www.youtube.com/channel/UCB2mmWReEYkChqlMk0GjvNA"><i class="fa fa-youtube-play"></i></a></li>
-			<li><a class="icon" id="spotify" href="https://open.spotify.com/artist/6UytzMPJfPy7zHhPXTDMvr?si=ZE2jZQWPQiShPtvbs0WjOg"><i  class="fa fa-spotify"></i></a></li>
+			<li><a class="icon" id="instagram" href="https://www.instagram.com/seistetos/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+			<li><a class="icon" id="facebook" href="https://www.facebook.com/grupoacademicoseistetos"><i class="fa fa-facebook-square" target="_blank"></i></a></li>
+			<li><a class="icon" id="youtube" href="https://www.youtube.com/channel/UCB2mmWReEYkChqlMk0GjvNA"><i class="fa fa-youtube-play" target="_blank"></i></a></li>
+			<li><a class="icon" id="spotify" href="https://open.spotify.com/artist/6UytzMPJfPy7zHhPXTDMvr?si=ZE2jZQWPQiShPtvbs0WjOg" target="_blank"><i  class="fa fa-spotify"></i></a></li>
 		</ul>
 		<p class="moto">A chumbar a Maria desde 1992</p>
 		<p>Developed with 🍷 by <a href="https://www.linkedin.com/in/tiago-costa-b141121b1/" target="_blank" rel="noopener">Tiago Costa</a>.</p>
