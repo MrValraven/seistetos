@@ -95,7 +95,7 @@ export default defineComponent({
 	display: flex;
 	flex-direction: column;
 	background-color: #f7f7f7;
-	padding: 60px;
+	padding: 100px;
 	overflow: hidden;
 
   h1 {
@@ -119,7 +119,7 @@ export default defineComponent({
 @media (max-width: 1000px) {
 
   .contacts {
-    padding: 30px;
+    padding: 100px;
 
     h1 {
       font-size: 36px;
