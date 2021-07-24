@@ -1,6 +1,6 @@
 # Overview
 
-A Website I built for Grupo Académico Seistetos. This was my first website and the one where I consolidated my HTML, CSS and Javascript skills. I later rebuilt this using Vue3 as a SPA which enabled me to produce a much more readable and mantainable codebase
+A Website I built for Grupo Académico Seistetos. This was my first website and the one where I consolidated my HTML, CSS and Javascript skills. I later rebuilt this using Vue3 as a SPA which enabled me to produce a much more readable and mantainable codebase.
 
 ![Seistetos](screenshot.jpg)
 
